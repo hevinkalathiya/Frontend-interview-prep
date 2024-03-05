@@ -26,6 +26,7 @@ const CountriesList = () => {
       }
     };
 
+    // Fetch countries if input value is not empty otherwise set countries to empty array
     if (inputValue.trim() !== "") {
       fetchCountries();
     } else {
@@ -35,7 +36,7 @@ const CountriesList = () => {
     return () => {
       setCountries([]);
     };
-  }, [debouncedVal, inputValue]);
+  }, [debouncedVal]);
 
   const handleAddMyList = (country: string) => {
     // Add country to myList if it doesn't exist if it does exist, don't add it
@@ -88,7 +89,20 @@ const CountriesList = () => {
                     removeCountry(country);
                   }}
                 >
-                  X
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#ff0000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
                 </div>
               </div>
             </li>
