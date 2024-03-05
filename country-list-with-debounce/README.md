@@ -1,30 +1,22 @@
-# React + TypeScript + Vite
+# AlgoChurn Country Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This web page features a real-time country search functionality.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Live Search:** The page includes an input box that takes user input for country names.
 
-## Expanding the ESLint configuration
+2. **API Integration:** On every keystroke, the page makes API calls to `https://algochurn-server.onrender.com/practice/countries/:country`.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+3. **Debouncing:** API calls are debounced with a 500ms duration, ensuring no calls during typing but triggering after the user stops typing for at least 500ms.
 
-- Configure the top-level `parserOptions` property like this:
+4. **Dropdown Display:** The API returns a list of countries matching the input, displayed in a dropdown.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+5. **Selection Update:** Users can select a country from the dropdown, updating the input box.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+
+1. Enter a country name in the input box.
+2. API calls are debounced, providing a seamless search experience.
+3. The dropdown dynamically updates with matching countries.
+4. Select a country from the dropdown to update the input box.
