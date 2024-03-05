@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import useDebouncedValue from './useDebounced';
+import React, { useEffect, useState } from "react";
+import useDebouncedValue from "./useDebounced";
 
 const CountriesList = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [countries, setCountries] = useState([]);
-  const [myList, setMyList] = useState([]);
   const debouncedVal = useDebouncedValue(inputValue, 300);
+  const [myList, setMyList] = useState<string[]>([]);
 
-  const handleChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+  const handleChange = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setInputValue(e.target.value);
   };
 
   useEffect(() => {
-
     const fetchCountries = async () => {
       try {
         const response = await fetch(
@@ -21,11 +22,11 @@ const CountriesList = () => {
         const data = await response.json();
         setCountries(data.countries);
       } catch (error) {
-        console.error('Error fetching countries:', error);
+        console.error("Error fetching countries:", error);
       }
     };
 
-    if (inputValue.trim() !== '') {
+    if (inputValue.trim() !== "") {
       fetchCountries();
     } else {
       setCountries([]);
@@ -36,8 +37,15 @@ const CountriesList = () => {
     };
   }, [debouncedVal, inputValue]);
 
+  const handleAddMyList = (country: string) => {
+    // Add country to myList if it doesn't exist if it does exist, don't add it
+    if (!myList.includes(country)) {
+      setMyList([...myList, country]);
+    }
+  };
+
   const removeCountry = (con: string) => {
-    const remove = myList.filter((list) => list !== con);
+    const remove = myList.filter((list: string) => list !== con);
 
     setMyList(remove);
   };
@@ -57,9 +65,7 @@ const CountriesList = () => {
           {countries.map((country) => (
             <li
               key={country}
-              onClick={() => {
-                setMyList([...myList, country]);
-              }}
+              onClick={() => handleAddMyList(country)}
               className="cursor-pointer hover:bg-gray-300 bg-gray-200"
             >
               <div className="flex justify-between w-full space-y-1 p-1">
@@ -75,7 +81,7 @@ const CountriesList = () => {
           {myList.map((country) => (
             <li key={country}>
               <div className="flex justify-between w-full space-y-1 p-1">
-                <p>{country} </p>{' '}
+                <p>{country} </p>{" "}
                 <div
                   className="cursor-pointer"
                   onClick={() => {
