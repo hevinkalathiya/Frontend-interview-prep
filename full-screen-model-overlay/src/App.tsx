@@ -6,6 +6,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
+  // Close modal when clicking outside
   useClickOutside(ref, () => {
     setIsOpen(false);
   });
@@ -31,6 +32,13 @@ function App() {
           ref={ref}
         >
           <h1>Don't forget to like this repo</h1>
+          <a
+            href="https://www.hevin.site/"
+            className="hover:border-b  text-blue-500 border-blue-500 font-bold"
+            target="_blank"
+          >
+            Visit My World
+          </a>
           <button className="button" onClick={() => setIsOpen(false)}>
             Close Model
           </button>
