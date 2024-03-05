@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import "./App.css";
 import useClickOutside from "./useOutsideClick";
+import toast from "react-hot-toast";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,6 +9,7 @@ function App() {
 
   // Close modal when clicking outside
   useClickOutside(ref, () => {
+    toast.success("Clicked Outside 🤫");
     setIsOpen(false);
   });
 
