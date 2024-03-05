@@ -24,3 +24,8 @@ My coding solutions on AlgoExpert, LeetCode, FreeCodeCamp, Educative(Coding Pate
 # ⚡ TODO
 
 👨‍💻 Convert into a React based web app for personal revision, Inbuilt hack IDE to test cpp code on the go, categorize by Difficulty, Tags and modules.
+
+### To add tailwind using cdn
+
+<!-- <script src="https://cdn.tailwindcss.com"></script>
+ -->
