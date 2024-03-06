@@ -46,6 +46,7 @@ function App() {
               onChange={(checked) => {
                 handleCheck(list, checked);
               }}
+              // @ts-expect-error
               checked={list.checked}
             />
           </div>
